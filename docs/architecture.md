@@ -1,9 +1,5 @@
 # Architecture
 
-```text
-Sensors -> validation and filtering -> safety latch -> output/alert
-                                      |
-                                      +-> MQTT telemetry and logs
-```
+ESP32 ADC1 GPIO34 samples an LDR divider every 100 ms. The Interlock policy requires valid non-rail light ≥500 and MQTT connectivity for 3000 ms before explicit ARM. GPIO25 indicates permission through a 330 Ω green LED. OLED I2C21/22 shows state. There is no actuator or certified safety function.
 
-The implementation separates acquisition, decision logic, output handling, and telemetry. Hardware-specific access is kept at the edge so the core behavior can be tested with simulated readings.
+See the README, circuit SVG and firmware for the complete behavior. Historical seed files are retained; PlatformIO builds only firmware/main.cpp.

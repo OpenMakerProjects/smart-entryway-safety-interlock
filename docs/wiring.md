@@ -1,16 +1,5 @@
-# Wiring guide
+# Wiring
 
-This is a low-voltage prototype wiring plan for **Smart Entryway Safety Interlock**. Confirm every module's datasheet because breakout-board pinouts vary.
+Follow [the editable circuit](circuit-diagram.svg) and the exact pin table in [README](../README.md). Disconnect supplies before assembly. All grounds are common and GPIO is 3.3 V.
 
-| Component | Suggested pin | Role | Check |
-| --- | --- | --- | --- |
-| light sensor | A3 | Analog input | Confirm the module voltage and pinout before power-up. |
-| OLED display | 4 | Digital I/O | Confirm the module voltage and pinout before power-up. |
-| Status output | LED_BUILTIN | Output | Use a resistor when an external LED is fitted. |
-
-## Power
-
-- Use a regulated supply sized for the selected modules.
-- Join grounds unless an interface is explicitly isolated.
-- Do not connect mains voltage directly to a development board.
-- Add a fuse, emergency stop, and certified isolation where a real actuator can create risk.
+3V3 → LDR → GPIO34 junction → 10 kΩ → GND. OLED VCC3V3/GND/SDA21/SCL22. GPIO25 → 330 Ω → green LED anode; cathode GND. USB supplies the controller. No actuator or relay is connected.
